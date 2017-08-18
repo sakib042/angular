@@ -6,6 +6,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlueColorDirective } from './blue-color.directive';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ItemComponent } from './item/item.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent,
     FooterComponent,
     BlueColorDirective,
-    SidebarComponent
+    SidebarComponent,
+    ItemComponent,
+    TabsComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule
