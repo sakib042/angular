@@ -14,8 +14,7 @@ export class TabsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   onChoose(side){
     this.chosenList = side;

@@ -9,6 +9,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ItemComponent } from './item/item.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
+import { RangeComponent } from './range.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ListComponent } from './list/list.component';
     SidebarComponent,
     ItemComponent,
     TabsComponent,
-    ListComponent
+    ListComponent,
+    RangeComponent
   ],
   imports: [
     BrowserModule
