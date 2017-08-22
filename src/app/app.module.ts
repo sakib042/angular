@@ -10,6 +10,7 @@ import { ItemComponent } from './item/item.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { RangeComponent } from './range.component';
+import { ListnamesService } from './listnames.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { RangeComponent } from './range.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ListnamesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

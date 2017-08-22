@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListnamesService } from '../listnames.service';
 
 @Component({
   selector: 'app-tabs',
@@ -6,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-  characters = [
-    {name: 'Nazmus Sakib', side:''},
-    {name: 'Farhan Angan', side:''}
-  ];
+  characters = [];
   chosenList = 'all';
+  nameList: ListnamesService;
 
-  constructor() { }
+  constructor(nameList: ListnamesService) {
+    this.nameList = nameList;
+  }
 
   ngOnInit() { }
 
@@ -21,11 +22,7 @@ export class TabsComponent implements OnInit {
   }
 
   getCharacters(){
-    if(this.chosenList === 'all'){
-      return this.characters.slice();
-    }
-    return this.characters.filter((char) => {
-      return char.side === this.chosenList;
-    });
+    this.characters = this.nameList.getCharacters(this.chosenList);
+    return this.characters;
   }
 }

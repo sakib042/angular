@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ListnamesService } from '../listnames.service';
 
 @Component({
   selector: 'app-item',
@@ -7,11 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  characters;
+  @Input() character;
+  nameList: ListnamesService;
 
-  constructor() { }
+  constructor(nameList: ListnamesService) {
+    this.nameList = nameList;
+  }
 
   ngOnInit() {
+  }
+
+  onAssign(side){
+    //this.character.side = side;
+    this.nameList.onSideChosen({name: this.character.name, side: side});
   }
 
 }
