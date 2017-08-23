@@ -7,22 +7,26 @@ import { ListnamesService } from '../listnames.service';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-  characters = [];
-  chosenList = 'all';
-  nameList: ListnamesService;
+  // characters = [];
+  // chosenList = 'all';
+  // nameList: ListnamesService;
 
-  constructor(nameList: ListnamesService) {
-    this.nameList = nameList;
+  constructor() {
+    // this.nameList = nameList;
   }
+
+  // constructor(nameList: ListnamesService) {
+  //   this.nameList = nameList;
+  // }
 
   ngOnInit() { }
 
-  onChoose(side){
-    this.chosenList = side;
-  }
+  // onChoose(side){
+  //   this.chosenList = side;
+  // }
 
-  getCharacters(){
-    this.characters = this.nameList.getCharacters(this.chosenList);
-    return this.characters;
-  }
+  // getCharacters(){
+  //   this.characters = this.nameList.getCharacters(this.chosenList);
+  //   return this.characters;
+  // }
 }

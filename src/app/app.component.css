@@ -6,8 +6,11 @@
     right: 0;
     width: 92%;
     height: calc(100%-80px);
-    padding: 10px;
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+.panel-heading {
+    background-color: #7D9;
 }

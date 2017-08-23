@@ -2,13 +2,21 @@
 <sidebar></sidebar>
 <section class="main-section">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <app-tabs></app-tabs>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{heading}}
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </section>
 
-<app-range [initialValue]="newInitialValue"></app-range>	
+<!-- <app-range [initialValue]="newInitialValue"></app-range> -->
 <footer></footer>
