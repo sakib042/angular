@@ -1,12 +1,28 @@
-<ul class="nav nav-tabs">
-    <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="all" style="cursor: pointer">All</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="light" style="cursor: pointer">Light</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="dark" style="cursor: pointer">Dark</a>
-    </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2>It's always better to keep the list updated.. !!</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <h1>Find Us All</h1>
+            <p class="small"><b>||</b> know details about us</p>
+            <hr/>
+        </div>
+        <div class="col-xs-12">
+            <ul class="nav nav-tabs">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="all" style="cursor: pointer">All</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="light" style="cursor: pointer">Light</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="dark" style="cursor: pointer">Dark</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <router-outlet></router-outlet>
+    </div>
+</div>

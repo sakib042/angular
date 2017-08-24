@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListnamesService } from '../listnames.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-character',
@@ -13,14 +14,22 @@ export class CreateCharacterComponent implements OnInit {
     {display: 'Light', value: 'light'},
     {display: 'Dark', value: 'dark'}
   ];
-  list:ListnamesService;
-  heading = "Add New Character";
+  title = '';
+  list: ListnamesService;
+  activatedRoute: ActivatedRoute;
 
-  constructor(list:ListnamesService) {
+  constructor(activatedRoute: ActivatedRoute, list:ListnamesService) {
     this.list = list;
+    this.activatedRoute = activatedRoute;
   }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(
+      (data) => {
+        this.title = data.title;
+        //console.log(this.title);
+      }
+    )
   }
 
   onSubmit(submittedData){
@@ -30,4 +39,6 @@ export class CreateCharacterComponent implements OnInit {
     }
     this.list.addCharacters(submittedData.value.name, submittedData.value.side);
   }
+
+
 }

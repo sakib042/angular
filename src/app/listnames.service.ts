@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ListnamesService{
   private characters = [
-    {name: 'Nazmus Sakib', side:''},
+    {name: 'Nazmus Sakib', side:'light'},
     {name: 'Zinath Farhana', side:''},
     {name: 'Rakibul Hasan', side:''},
-    {name: 'Tanzina Nipa', side:''},
+    {name: 'Tanzina Nipa', side:'dark'},
     {name: 'Shahid Hasan', side:''},
     {name: 'Farhan Faysal', side:''}
   ];

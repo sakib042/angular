@@ -1,19 +1,33 @@
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
-    <div class="form-group">
-        <label for="name" class="label-control">Character Name</label>
-        <input type="text" id="name" name="name" class="form-control" ngModel required #nameCtrl="ngModel" minlength="5" />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2>It's always better to have someone new.. !!</h2>
     </div>
-    <div class="form-group">
-        <label for="side" class="label-control">Choose Side</label>
-        <select id="side" name="side" class="form-control" ngModel>
-        <option *ngFor="let option of availableSides" [value]="option.value">
-          {{ option.display }}
-        </option>
-      </select>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <h1>{{title}}</h1>
+            <p class="small"><b>||</b> you can add someone to our team</p>
+            <hr/>
+        </div>
+        <div class="col-xs-12">
+            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                <div class="form-group">
+                    <label for="name" class="label-control">Character Name</label>
+                    <input type="text" id="name" name="name" class="form-control" ngModel required #nameCtrl="ngModel" minlength="5" />
+                </div>
+                <div class="form-group">
+                    <label for="side" class="label-control">Choose Side</label>
+                    <select id="side" name="side" class="form-control" ngModel>
+                  <option *ngFor="let option of availableSides" [value]="option.value">
+                    {{ option.display }}
+                  </option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="form.invalid">Add Character</button>
+                </div>
+                <span class="alert-position alert alert-danger" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name!</span>
+                <span class="alert-position alert alert-warning" *ngIf="nameCtrl.invalid && nameCtrl.errors.minlength">Name must be 5 character long!</span>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="form.invalid">Add Character</button>
-    </div>
-    <span class="alert-position alert alert-danger" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name!</span>
-    <span class="alert-position alert alert-warning" *ngIf="nameCtrl.invalid && nameCtrl.errors.minlength">Name must be 5 character long!</span>
-</form>
+</div>

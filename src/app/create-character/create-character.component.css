@@ -9,3 +9,8 @@ input.ng-invalid.ng-touched {
     right: 20px;
     z-index: 99;
 }
+
+.alert {
+    padding: 30px;
+    font-weight: bold;
+}

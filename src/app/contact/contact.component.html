@@ -1,0 +1,39 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2>It's always better to keep in touch.. !!</h2>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <h1>Share Your Views</h1>
+            <p class="small"><b>||</b> send us an email for any query</p>
+            <hr/>
+        </div>
+        <div class="col-xs-12">
+            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                <div class="form-group">
+                    <label for="email" class="label-control">Your Email Id</label>
+                    <input type="email" name="email" placeholder="Enter Email Id" class="form-control" #email="ngModel" ngModel required />
+                    <span class="small help-block" *ngIf="email.invalid && email.touched"><code>Email Id Required..!!</code></span>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="label-control">Your Full Name</label>
+                    <input type="name" name="name" placeholder="Enter Full Name" class="form-control" #name="ngModel" ngModel />
+                    <!-- <span class="help-block" *ngIf="name.invalid && name.touched">Full Name Missing..!!</span> -->
+                </div>
+                <div class="form-group">
+                    <label for="number" class="label-control">Your Phone No</label>
+                    <input type="number" name="number" placeholder="Enter Phone No" class="form-control" #number="ngModel" ngModel />
+                    <!-- <span class="help-block" *ngIf="number.invalid && number.touched">Phone Number Missing..!!</span> -->
+                </div>
+                <div class="form-group">
+                    <label for="message" class="label-control">Your Message</label>
+                    <textarea rows="5" name="message" placeholder="Type Your Message" class="form-control" [ngStyle]="{'resize': 'none'}" #message="ngModel" ngModel required></textarea>
+                    <span class="small help-block" *ngIf="message.invalid && message.touched"><code>Message Required..!!</code></span>
+                </div>
+                <div class="form-group text-right">
+                    <input type="submit" class="btn btn-lg" [ngClass]="form.invalid?'btn-default':'btn-success'" value="Send Message" [disabled]="form.invalid" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
