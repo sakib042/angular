@@ -1,6 +1,3 @@
-import { Injectable } from '@angular/core';
-
-@Injectable()
 export class HelperHeadService {
 
   head = null;
@@ -13,6 +10,10 @@ export class HelperHeadService {
 
   getHeader(){
     return this.head;
+  }
+
+  logMessage(message){
+    console.log(message);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  title = '';
+  subtitle = '';
+  activatedRoute: ActivatedRoute;
+
+  constructor(activatedRoute: ActivatedRoute) {
+    this.activatedRoute = activatedRoute;
+  }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(
+      (data) => {
+      this.title = data.title;
+      this.subtitle = data.subtitle;
+      //console.log(this.title);
+      }
+    )
   }
 
 }

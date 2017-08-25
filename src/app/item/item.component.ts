@@ -9,18 +9,16 @@ import { ListnamesService } from '../listnames.service';
 export class ItemComponent implements OnInit {
 
   @Input() character;
-  nameList: ListnamesService;
+  listnamesService: ListnamesService;
 
-  constructor(nameList: ListnamesService) {
-    this.nameList = nameList;
+  constructor(listnamesService: ListnamesService) {
+    this.listnamesService = listnamesService;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onAssign(side){
-    //this.character.side = side;
-    this.nameList.onSideChosen({name: this.character.name, side: side});
+    this.listnamesService.onSideChosen({name: this.character.name, side: side});
   }
 
 }

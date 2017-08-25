@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListnamesService } from '../listnames.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -7,26 +8,20 @@ import { ListnamesService } from '../listnames.service';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
-  // characters = [];
-  // chosenList = 'all';
-  // nameList: ListnamesService;
+  title='';
+  subtitle='';
+  activatedRoute: ActivatedRoute;
 
-  constructor() {
-    // this.nameList = nameList;
+  constructor(activatedRoute: ActivatedRoute) {
+    this.activatedRoute = activatedRoute;
   }
 
-  // constructor(nameList: ListnamesService) {
-  //   this.nameList = nameList;
-  // }
-
-  ngOnInit() { }
-
-  // onChoose(side){
-  //   this.chosenList = side;
-  // }
-
-  // getCharacters(){
-  //   this.characters = this.nameList.getCharacters(this.chosenList);
-  //   return this.characters;
-  // }
+  ngOnInit() {
+    this.activatedRoute.data.subscribe(
+      (data) => {
+        this.title = data.title;
+        this.subtitle = data.subtitle;
+      }
+    )
+  }
 }

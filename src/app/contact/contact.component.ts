@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -6,16 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  	title = '';
+  	subtitle = '';
+  	activatedRoute: ActivatedRoute;
 
-  constructor() {}
+  	constructor(activatedRoute: ActivatedRoute) {
+    	this.activatedRoute = activatedRoute;
+  	}
 
-  ngOnInit() { }
+  	ngOnInit() {
+    	this.activatedRoute.data.subscribe(
+			(data) => {
+				this.title = data.title;
+				this.subtitle = data.subtitle;
+			//console.log(this.title);
+			}
+    	)
+  	}
 
-  onSubmit(info){
-    if(info.invalid){
-      return;
-    }
-    console.log(info.value);
-  }
-
+	onSubmit(info){
+		if(info.invalid){
+			return;
+		}
+		console.log(info.value);
+	}
 }

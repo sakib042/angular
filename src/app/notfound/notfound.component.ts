@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-notfound',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotfoundComponent implements OnInit {
 
-  constructor() { }
+  title='';
+  activatedRoute: ActivatedRoute;
+
+  constructor(activatedRoute: ActivatedRoute) {
+    this.activatedRoute = activatedRoute;
+  }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(
+      (data) => {
+        this.title = data.title;
+      }
+    )
   }
 
 }
