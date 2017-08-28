@@ -7,28 +7,38 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  	title = '';
-  	subtitle = '';
-  	activatedRoute: ActivatedRoute;
+  title = '';
+  subtitle = '';
+  activatedRoute: ActivatedRoute;
+  formSubmitted = false;
 
-  	constructor(activatedRoute: ActivatedRoute) {
-    	this.activatedRoute = activatedRoute;
-  	}
+  constructor(activatedRoute: ActivatedRoute) {
+    this.activatedRoute = activatedRoute;
+  }
 
-  	ngOnInit() {
-    	this.activatedRoute.data.subscribe(
-			(data) => {
-				this.title = data.title;
-				this.subtitle = data.subtitle;
-			//console.log(this.title);
-			}
-    	)
-  	}
+  ngOnInit() {
+    this.activatedRoute.data.subscribe(
+    (data) => {
+      this.title = data.title;
+      this.subtitle = data.subtitle;
+    //console.log(this.title);
+    }
+    )
+  }
+
+  timeout() {
+    setTimeout(() => {
+      this.formSubmitted = false;
+    }, 3000);
+  }
 
 	onSubmit(info){
+    this.formSubmitted = true;
 		if(info.invalid){
-			return;
+      this.formSubmitted = false;
+      return;
 		}
-		console.log(info.value);
+    console.log(info.value);
+    this.timeout();
 	}
 }

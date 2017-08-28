@@ -17,7 +17,8 @@ export class CreateCharacterComponent implements OnInit {
 	title = '';
 	subtitle = '';
 	list: ListnamesService;
-	activatedRoute: ActivatedRoute;
+  activatedRoute: ActivatedRoute;
+  formSubmitted = false;
 
 	constructor(activatedRoute: ActivatedRoute, list:ListnamesService) {
 		this.list = list;
@@ -31,12 +32,21 @@ export class CreateCharacterComponent implements OnInit {
 				this.subtitle = data.subtitle;
 			}
 		)
-	}
+  }
+
+  timeout() {
+    setTimeout(() => {
+      this.formSubmitted = false;
+    }, 2000);
+  }
 
 	onSubmit(submittedData){
+    this.formSubmitted = true;
 		if(submittedData.invalid){
+      this.formSubmitted = false;
 			return;
 		}
-		this.list.addCharacters(submittedData.value.name, submittedData.value.side);
+    this.list.addCharacters(submittedData.value.name, submittedData.value.side);
+    this.timeout();
 	}
 }

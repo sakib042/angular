@@ -2,7 +2,15 @@
     <div class="panel-heading">
         <h2>It's always better to keep in touch.. !!</h2>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" *ngIf="formSubmitted">
+        <div class="col-xs-12">
+            <div class="alert alert-success">
+                <h1>Message has been sent.</h1>
+                <p>Thanks for the message. We will contact you soon.</p>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" *ngIf="!formSubmitted">
         <div class="col-xs-12">
             <h1>{{title}}</h1>
             <p class="small"><b>||&nbsp;</b>{{subtitle}}</p>
