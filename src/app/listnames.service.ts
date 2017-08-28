@@ -9,7 +9,7 @@ export class ListnamesService{
   private characters = [
     {name: 'error', side:''}
   ];
-
+  private games = []
   error = true;
 
   private log: HelperHeadService;
@@ -25,8 +25,8 @@ export class ListnamesService{
     this.http.get(url)
       .map(
         (response: Response) => {
-          const data = response.json();
-          const extractedData = data.results;
+          const extractedData = response.json().results;
+          console.log(response.json());
           const chars = extractedData.map((char) => {
             return {name: char.name, side: ''};
           });
@@ -42,6 +42,89 @@ export class ListnamesService{
         }
       );
   }
+
+  private mainDataFromDB;
+  private results = {
+    keys: [],
+    data: []
+  };
+  private dataX = [];
+  private keysX = [];
+
+  fetchGameData(url){
+    this.http.get(url)
+    .map(
+      (response) => {
+        const data = response.json();
+        this.mainDataFromDB = data;
+        for (var key in data) {
+          this.dataX.push(data[key]);
+          this.keysX.push(key);
+        }
+        this.results = {
+          keys: this.keysX,
+          data: this.dataX
+        };
+        const chars = this.results.data;
+        return chars;
+      }
+    )
+    .subscribe(
+      (data) => {
+        this.games = data;
+        console.log(this.games);
+        this.error = false;
+        this.charactersChanged.next();
+      }
+    );
+  }
+
+  getAllGameData(key){
+    if(key === 'all'){
+      return this.games.slice();
+    }
+    return this.games.filter((char) => {
+      //console.log(char.availability);
+      const newKey = key.toLowerCase();
+      const name = char.name.toLowerCase();
+      return name.includes(newKey);
+    });
+  }
+
+  getAllAvailableGameData(key){
+    //console.log(key);
+    if(key === 'all'){
+      return this.games.slice();
+    }
+    return this.games.filter((char) => {
+      const newKey = key.toLowerCase();
+      //console.log(newKey);
+      const availability = char.availability.toLowerCase();
+      return this.ContainsExactString(availability, newKey);
+    });
+  }
+  ContainsExactString(sentence, compare) {
+    var words = sentence.split(" ");
+    for (var i = 0; i < words.length; ++i) {
+        if(words[i] === compare) {
+            return true;
+        }
+    }
+    return false;
+  }
+
+  getOneGameData(key){
+    console.log(this.results.data[key]);
+    return this.results.data[key];
+  }
+
+  // getSearchGameData(key){
+  //   const pos = this.characters.findIndex((char)=>{
+  //     return char.name === charInfo.name;
+  //   })
+  //   this.characters[pos].side = charInfo.side;
+  //   this.charactersChanged.next();
+  // }
 
   getCharacters(chosenList){
     if(chosenList === 'all'){

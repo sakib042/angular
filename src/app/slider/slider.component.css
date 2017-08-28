@@ -1,0 +1,25 @@
+/*------------Slider-------------*/
+
+.carousel-inner .item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: #202020;
+    opacity: .5;
+}
+
+.carousel-inner .item .overlay2 {
+    position: absolute;
+    top: 10%;
+    left: 12%;
+    width: 35%;
+    height: 100%;
+    color: #ffffff;
+    text-align: justify;
+}
+
+.modal-content {
+    background-color: #5DA93C
+}

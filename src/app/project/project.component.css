@@ -1,0 +1,36 @@
+/*----------Header---------*/
+
+.header {
+    background-color: #202020;
+    padding: 15px;
+}
+
+.header .first,
+.header .middle,
+.header .last {
+    padding: 15px 0;
+}
+
+.header .first {
+    padding: 25px 0 0 20px;
+}
+
+.header .last {
+    padding: 30px 20px 0 0;
+}
+
+.header h4 {
+    color: #ffffff;
+}
+
+.header h4 i {
+    color: red;
+}
+
+.header img.logo {
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    max-width: 70%;
+    max-height: 70%;
+}

@@ -1,0 +1,96 @@
+<div class="header">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 first">
+            <button type="button" class="btn btn-success btn-lg">ADD GAME</button>
+        </div>
+        <div class="col-xs-4 col-sm-4 middle">
+            <img src="../../assets/img/logo.png" alt="logo" class="logo img img-responsive">
+        </div>
+        <div class="col-xs-4 col-sm-4 text-right last">
+            <h4><strong><i class="fa fa-user-circle fa-lg"></i>&nbsp;&nbsp;PROFILE</strong></h4>
+        </div>
+    </div>
+
+    <!-- <app-slider></app-slider> -->
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <form name="searchForm" class="form-inline form-group">
+                <div class="col-xs-12 col-sm-6" style="margin-bottom:5px;">
+                    <select class="form-control" (change)="onSearchChange($event.target.value)">
+                      <option value="all">All</option>
+                      <option value="avail">Avail</option>
+                      <option value="unavail">Unavail</option>
+                    </select>
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="search" id="search" (input)="doSearch($event.target.value)" [(ngModel)]="str" required #searchCtrl="ngModel" placeholder="Search by Name" />
+                        <span class="input-group-btn">
+                        <button [disabled]="searchCtrl.invalid" (click)="doReset()" type="button" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                        <!-- <button [disabled]="searchCtrl.invalid" (click)="doSearch()" type="submit" class="btn btn-success" ><i class="fa fa-search"></i>&nbsp;Search</button> -->
+                      </span>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6">
+                    <!-- <dir-pagination-controls></dir-pagination-controls> -->
+                </div>
+            </form>
+
+            <table style="background-color:grey;" class="table table-responsive table-stripped" *ngIf="game.name!==''">
+                <tr>
+                    <td class="hidden-in-mobile"><img height="65px" width="65px" class="img img-circle" src="{{game.image_url}}" alt="image" /></td>
+                    <td>
+                        <h4 style="margin: 15px 0 2px 0">{{game.name}}</h4>
+                        <p style="color:gray">- {{game.owner}}</p>
+                    </td>
+                    <td>
+                        <h4><span class="platform">{{game.platform}}</span></h4>
+                        <span class="rating">
+                        <i class="{{game.rating>=1?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=2?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=3?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=4?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating==5?'addYellow':''}}  fa fa-star"></i>
+                    </span>
+                    </td>
+                    <td>
+                        <br/>
+                        <div class="availability-layer ">
+                            <div class="availability ">{{game.availability=='avail'?'A':'U'}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-responsive table-stripped">
+                <tr *ngFor="let game of games; let i = index">
+                    <td class="hidden-in-mobile"><img height="65px" width="65px" class="img img-circle" src="{{game.image_url}}" alt="image" /></td>
+                    <td>
+                        <h4 style="margin: 15px 0 2px 0">{{game.name}}</h4>
+                        <p style="color:gray">- {{game.owner}}</p>
+                    </td>
+                    <td>
+                        <h4><span class="platform">{{game.platform}}</span></h4>
+                        <span class="rating">
+                        <i class="{{game.rating>=1?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=2?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=3?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating>=4?'addYellow':''}} fa fa-star"></i>&nbsp;
+                        <i class="{{game.rating==5?'addYellow':''}}  fa fa-star"></i>
+                    </span>
+                    </td>
+                    <td>
+                        <br/>
+                        <div class="availability-layer ">
+                            <div class="availability ">{{game.availability=='avail'?'A':'U'}}</div>
+                        </div>
+                    </td>
+                    <td><br/>
+                        <button type="button" (click)="showDetail(i)" class="btn btn-primary listButton"><i class="fa fa-eye"></i></button>
+                        <button type="button" (click)="delete(i)" class="btn btn-danger listButton"><i class="fa fa-times"></i></button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from "@angular/forms";
 import { appRoutingModule } from './app-routing.module';
 
 /* Components */
@@ -16,6 +17,8 @@ import { RangeComponent } from './range.component';
 import { AboutComponent } from './about/about.component';
 import { HelperComponent } from './helper/helper.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SliderComponent } from './slider/slider.component';
+import { ProjectComponent } from './project/project.component';
 
 /* Services */
 import { ListnamesService } from './listnames.service';
@@ -37,11 +40,14 @@ import { BlueColorDirective } from './blue-color.directive';
 		RangeComponent,
 		AboutComponent,
 		HelperComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    SliderComponent,
+    ProjectComponent
 	],
 	imports: [
 		BrowserModule,
     HttpModule,
+    FormsModule,
     appRoutingModule
 	],
 	providers: [ListnamesService, HelperHeadService],

@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
+    this.listnamesService.fetchGameData("https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps.json");
     this.listnamesService.fetchCharacters('http://swapi.co/api/people/');
   }
 }

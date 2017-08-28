@@ -1,1 +1,106 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: seliseFont1;
+    src: url(assets/fonts/DroidSans.ttf);
+}
+
+@font-face {
+    font-family: seliseFont2;
+    src: url(assets/fonts/DroidSansBold.ttf);
+}
+
+body {
+    font-family: seliseFont1, seliseFont2;
+}
+
+.container {
+    box-shadow: 0 2px 3px #000000;
+}
+
+.has-error {
+    border-color: red;
+    box-shadow: 0 0 2px red;
+}
+
+
+/*---------- Search Section -----------*/
+
+.search-section {
+    padding: 15px;
+    background-color: #202020;
+}
+
+
+/*-------list view -----------------*/
+
+.table {
+    color: #ffffff;
+}
+
+.platform {
+    padding: 2px 5px;
+    background-color: #5DA93C;
+    color: #ffffff;
+}
+
+span.rating {
+    padding: 5px 0;
+}
+
+.availability-layer {
+    padding: 3px 5px;
+    background-color: #5DA93C;
+    color: #ffffff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    height: 25px;
+    width: 25px;
+}
+
+.availability {
+    padding: 0 3px;
+    color: #ffffff;
+    text-transform: uppercase;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.detail {
+    color: #ffffff;
+    padding: 30px 0;
+}
+
+.fa-star {
+    color: white;
+    transition: .3;
+}
+
+.add-rating .fa-star:hover,
+.addYellow {
+    color: yellow;
+    transition: .3;
+}
+
+.pagination {
+    margin: 0;
+    float: right;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 767px) {
+    .hidden-in-mobile {
+        display: none;
+    }
+    .listButton {
+        padding: 2px;
+    }
+    .listButton .fa {
+        font-size: 15px;
+    }
+    .rating .fa {
+        font-size: 10px;
+    }
+}
