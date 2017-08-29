@@ -21,29 +21,18 @@ export class ListnamesService{
     this.http = http;
   }
 
-  fetchCharacters(url){
-    this.http.get(url)
-      .map(
-        (response: Response) => {
-          const extractedData = response.json().results;
-          console.log(response.json());
-          const chars = extractedData.map((char) => {
-            return {name: char.name, side: ''};
-          });
-          return chars;
-        }
-      )
-      .subscribe(
-        (data) => {
-          //console.log(data);
-          this.characters = data;
-          this.error = false;
-          this.charactersChanged.next();
-        }
-      );
+  addGameData(url, data){
+    const _data = JSON.stringify(data.value);
+    //console.log(_data);
+    this.http.post(url, _data).subscribe(
+      (data)=>{
+        console.log(data);
+        this.games.push(data);
+        this.charactersChanged.next();
+      }
+    );
   }
 
-  private mainDataFromDB;
   private results = {
     keys: [],
     data: []
@@ -56,8 +45,6 @@ export class ListnamesService{
     .map(
       (response) => {
         const data = response.json();
-        this.mainDataFromDB = data;
-        console.log(this.mainDataFromDB);
         for (var key in data) {
           this.dataX.push(data[key]);
           this.keysX.push(key);
@@ -119,15 +106,13 @@ export class ListnamesService{
     return this.results.data[key];
   }
 
+
+
   deleteGameData(key){
     const url = 'https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps/' + key + '.json';
-    this.http.delete(url).subscribe(
-      ()=>{
-          this.getAllAvailableGameData('all');
-          console.log(this.getAllAvailableGameData('all'));
-          console.log(this.games);
-          console.log(this.games.slice());
-          this.charactersChanged.next();
+    return this.http.delete(url).subscribe(
+      (data)=>{
+          return this.games = this.getAllAvailableGameData('all');
       }
     )
   }
@@ -135,6 +120,30 @@ export class ListnamesService{
   deleteOne(key){
     const newKey = this.results.keys[key];
     this.deleteGameData(newKey);
+  }
+
+
+
+  fetchCharacters(url){
+    this.http.get(url)
+      .map(
+        (response: Response) => {
+          const extractedData = response.json().results;
+          console.log(response.json());
+          const chars = extractedData.map((char) => {
+            return {name: char.name, side: ''};
+          });
+          return chars;
+        }
+      )
+      .subscribe(
+        (data) => {
+          //console.log(data);
+          this.characters = data;
+          this.error = false;
+          this.charactersChanged.next();
+        }
+      );
   }
 
   getCharacters(chosenList){
