@@ -61,7 +61,33 @@ export class ProjectComponent implements OnInit {
     console.log(this.game);
   }
 
+  confirm = false;
+  showConfirm = -1;
+
+  confirmDelete(id){
+    this.showConfirm = -1;
+    if(this.confirm == true){
+      this.listnamesService.deleteOne(id);
+    }
+  }
   delete(id){
-    console.log(id+' Deleted.!');
+    if(this.showConfirm !== id){
+      this.confirm = true;
+      this.showConfirm = id;
+    }
+    else{
+      this.confirm = false;
+      this.showConfirm = -1;
+    }
+  }
+
+  addForm = false;
+
+  onStatusChanged(newStatus){
+    this.addForm = newStatus;
+  }
+
+  showAddForm(){
+    this.onStatusChanged(true);
   }
 }

@@ -19,6 +19,7 @@ import { HelperComponent } from './helper/helper.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { SliderComponent } from './slider/slider.component';
 import { ProjectComponent } from './project/project.component';
+import { AddGameComponent } from './add-game/add-game.component';
 
 /* Services */
 import { ListnamesService } from './listnames.service';
@@ -26,6 +27,7 @@ import { HelperHeadService } from './helper-head.service';
 
 /* Directives */
 import { BlueColorDirective } from './blue-color.directive';
+
 
 @NgModule({
 	declarations: [
@@ -42,7 +44,8 @@ import { BlueColorDirective } from './blue-color.directive';
 		HelperComponent,
     NotfoundComponent,
     SliderComponent,
-    ProjectComponent
+    ProjectComponent,
+    AddGameComponent
 	],
 	imports: [
 		BrowserModule,

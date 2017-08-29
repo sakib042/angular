@@ -1,0 +1,23 @@
+.addFormStyle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+    border: 1px solid white;
+    background-color: green;
+    color: #ffffff;
+    z-index: 99;
+    transition: .5s;
+}
+
+.addFormStyleAdd {
+    top: 0;
+    transition: .5s;
+}
+
+.addFormStyleRemove {
+    top: -1000px;
+    transition: 1.5s;
+}

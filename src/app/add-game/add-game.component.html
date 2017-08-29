@@ -1,0 +1,68 @@
+<!-- <div class="row">
+    <div class="col-xs-12 col-sm-12 text-center">
+        <br/>
+        <h1 style="color:#fff">Added Successfully..!</h1><br/><br/>
+    </div>
+</div> -->
+<div class="addFormStyle" [ngClass]="addFormMain?'addFormStyleAdd':'addFormStyleRemove'">
+    <h1 class="text-center">Add Game Information</h1>
+    <hr/>
+    <form>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" name="name" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="owner">Owner</label>
+                <input class="form-control" type="text" name="owner" required="required" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control" rows="5" style="resize:none"></textarea>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <p class="form-control add-rating" style="background-color:green">
+                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
+                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
+                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
+                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
+                    <i class="addYellow fa fa-star fa-lg"></i>
+                </p>
+            </div>
+            <div class="form-group">
+                <label for="platform">Platform</label>
+                <select name="platform" class="form-control" required="required">
+                    <option value="none">Select Platform</option>
+                    <option value="xbox">Xbox</option>
+                    <option value="ios">IOS</option>
+                    <option value="playstation">Play Station</option>
+                    <option value="android">Android</option>
+                    <option value="windows">Windows</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="availability">Availability</label>
+                <select name="availability" class="form-control">
+                    <option value="none">Select Availability</option>
+                    <option value="avail">Available</option>
+                    <option value="unavail">Unavailable</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image_url">Image URL</label>
+                <input class="form-control" type="text" name="image_url" required="required" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group text-right">
+                <hr/>
+                <button type="button" class="btn btn-success btn-lg"><i class="fa fa-save fa-lg"></i>&nbsp;Save</button>
+                <button type="button" (click)="removeAddForm()" class="btn btn-danger btn-lg"><i class="fa fa-times fa-lg"></i>&nbsp;Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

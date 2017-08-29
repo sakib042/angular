@@ -57,6 +57,7 @@ export class ListnamesService{
       (response) => {
         const data = response.json();
         this.mainDataFromDB = data;
+        console.log(this.mainDataFromDB);
         for (var key in data) {
           this.dataX.push(data[key]);
           this.keysX.push(key);
@@ -118,13 +119,23 @@ export class ListnamesService{
     return this.results.data[key];
   }
 
-  // getSearchGameData(key){
-  //   const pos = this.characters.findIndex((char)=>{
-  //     return char.name === charInfo.name;
-  //   })
-  //   this.characters[pos].side = charInfo.side;
-  //   this.charactersChanged.next();
-  // }
+  deleteGameData(key){
+    const url = 'https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps/' + key + '.json';
+    this.http.delete(url).subscribe(
+      ()=>{
+          this.getAllAvailableGameData('all');
+          console.log(this.getAllAvailableGameData('all'));
+          console.log(this.games);
+          console.log(this.games.slice());
+          this.charactersChanged.next();
+      }
+    )
+  }
+
+  deleteOne(key){
+    const newKey = this.results.keys[key];
+    this.deleteGameData(newKey);
+  }
 
   getCharacters(chosenList){
     if(chosenList === 'all'){
