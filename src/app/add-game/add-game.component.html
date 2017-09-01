@@ -1,13 +1,9 @@
-<!-- <div class="row">
-    <div class="col-xs-12 col-sm-12 text-center">
-        <br/>
-        <h1 style="color:#fff">Added Successfully..!</h1><br/><br/>
-    </div>
-</div> -->
 <div class="addFormStyle" [ngClass]="addFormMain?'addFormStyleAdd':'addFormStyleRemove'">
-    <h1 class="text-center">Add Game Information</h1>
+    <h1 *ngIf="status==0" class="text-center">Add Game Information</h1>
+    <h1 *ngIf="status==99" class="text-center"><i class="fa fa-spinner fa-spin fa-lg"></i>&nbsp;&nbsp;Adding..!</h1>
+    <h1 *ngIf="status==200" class="text-center">Added Successfully..!</h1>
     <hr/>
-    <form (ngSubmit)="addGame(form)" #form="ngForm">
+    <form *ngIf="status==0" (ngSubmit)="addGame(form)" #form="ngForm">
         <div class="col-xs-12 col-sm-6">
             <div class="form-group">
                 <label for="name">Name</label>

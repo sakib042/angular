@@ -25,6 +25,7 @@ export class AddGameComponent implements OnInit {
     {display:'Windows', value:'win'}
   ]
   selectedPlatform: string = this.platformOptions[0].value;
+  status = 0;
 
   constructor(listnamesService: ListnamesService) {
     this.listnamesService = listnamesService;
@@ -41,8 +42,20 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame(formData){
-    console.log(formData);
+    //console.log(formData.value);
     var url = "https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps.json";
     this.listnamesService.addGameData(url, formData);
+    this.status = 99;
+    this.timeout();
+  }
+
+  timeout() {
+    setTimeout(() => {
+      this.status = this.listnamesService.getAddGameStatus();
+      console.log(this.status);
+    }, 1500);
+    setTimeout(() => {
+      this.status = 0;
+    }, 3000);
   }
 }

@@ -21,16 +21,24 @@ export class ListnamesService{
     this.http = http;
   }
 
+  private addGameStatus = 0;
+  private deleteGameStatus = 0;
+
   addGameData(url, data){
     const _data = JSON.stringify(data.value);
-    //console.log(_data);
+    const addedData = data.value;
     this.http.post(url, _data).subscribe(
       (data)=>{
-        console.log(data);
-        this.games.push(data);
+        this.games.push(addedData);
+        this.addGameStatus = data.status;
         this.charactersChanged.next();
+        console.log(this.games);
       }
     );
+  }
+
+  getAddGameStatus(){
+    return this.addGameStatus;
   }
 
   private results = {
@@ -91,6 +99,7 @@ export class ListnamesService{
       return this.ContainsExactString(availability, newKey);
     });
   }
+
   ContainsExactString(sentence, compare) {
     var words = sentence.split(" ");
     for (var i = 0; i < words.length; ++i) {
@@ -102,24 +111,28 @@ export class ListnamesService{
   }
 
   getOneGameData(key){
-    console.log(this.results.data[key]);
     return this.results.data[key];
   }
 
 
 
-  deleteGameData(key){
+  deleteGameData(id, key){
     const url = 'https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps/' + key + '.json';
-    return this.http.delete(url).subscribe(
+    this.http.delete(url).subscribe(
       (data)=>{
-          return this.games = this.getAllAvailableGameData('all');
+          this.deleteGameStatus = data.status;
+          this.games.splice(id, 1);
       }
     )
   }
 
-  deleteOne(key){
-    const newKey = this.results.keys[key];
-    this.deleteGameData(newKey);
+  deleteOne(id){
+    const newKey = this.results.keys[id];
+    this.deleteGameData(id, newKey);
+  }
+
+  getDeleteGameStatus(){
+    return this.deleteGameStatus;
   }
 
 

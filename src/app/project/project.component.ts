@@ -68,8 +68,10 @@ export class ProjectComponent implements OnInit {
     this.showConfirm = -1;
     if(this.confirm == true){
       this.listnamesService.deleteOne(id);
+      this.timeout();
     }
   }
+
   delete(id){
     if(this.showConfirm !== id){
       this.confirm = true;
@@ -80,6 +82,16 @@ export class ProjectComponent implements OnInit {
       this.showConfirm = -1;
     }
   }
+
+  timeout(){
+    setTimeout(() => {
+      if(this.listnamesService.getDeleteGameStatus()==200){
+        this.games = this.listnamesService.getAllGameData('all');
+      }
+    }, 2000);
+  }
+
+
 
   addForm = false;
 
