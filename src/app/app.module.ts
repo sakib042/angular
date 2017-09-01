@@ -27,6 +27,7 @@ import { HelperHeadService } from './helper-head.service';
 
 /* Directives */
 import { BlueColorDirective } from './blue-color.directive';
+import { DetailGameComponent } from './detail-game/detail-game.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { BlueColorDirective } from './blue-color.directive';
     NotfoundComponent,
     SliderComponent,
     ProjectComponent,
-    AddGameComponent
+    AddGameComponent,
+    DetailGameComponent
 	],
 	imports: [
 		BrowserModule,
