@@ -16,9 +16,9 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="game.name!==''">
         <div class="col-xs-12 col-sm-12">
-            <app-detail-game></app-detail-game>
+            <app-detail-game [detailFormMain]="detailForm" (newDetailFormMain)="onDetailStatusChanged($event)" [data]="game"></app-detail-game>
         </div>
     </div>
 
@@ -46,7 +46,7 @@
                 </div>
             </form>
 
-            <table style="background-color:grey;" class="table table-responsive table-stripped" *ngIf="game.name!==''">
+            <!-- <table style="background-color:grey;" class="table table-responsive table-stripped" *ngIf="game.name!==''">
                 <tr>
                     <td class="hidden-in-mobile"><img height="65px" width="65px" class="img img-circle" src="{{game.image_url}}" alt="image" /></td>
                     <td>
@@ -70,7 +70,7 @@
                         </div>
                     </td>
                 </tr>
-            </table>
+            </table> -->
 
             <table class="table table-responsive table-stripped">
                 <tr *ngFor="let game of games; let i = index">

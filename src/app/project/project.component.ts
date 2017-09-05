@@ -56,11 +56,6 @@ export class ProjectComponent implements OnInit {
     this.games = this.listnamesService.getAllAvailableGameData(searchValue);
   }
 
-  showDetail(id){
-    this.game = this.listnamesService.getOneGameData(id);
-    console.log(this.game);
-  }
-
   confirm = false;
   showConfirm = -1;
 
@@ -91,9 +86,8 @@ export class ProjectComponent implements OnInit {
     }, 2000);
   }
 
-
-
   addForm = false;
+  detailForm = false;
 
   onStatusChanged(newStatus){
     this.addForm = newStatus;
@@ -101,5 +95,15 @@ export class ProjectComponent implements OnInit {
 
   showAddForm(){
     this.onStatusChanged(true);
+  }
+
+  onDetailStatusChanged(newStatus){
+    this.detailForm = newStatus;
+  }
+
+  showDetail(id){
+    this.game = this.listnamesService.getOneGameData(id);
+    console.log(this.game);
+    this.onDetailStatusChanged(true);
   }
 }

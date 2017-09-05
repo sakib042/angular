@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ListnamesService } from "../listnames.service";
 
 @Component({
   selector: 'app-detail-game',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailGameComponent implements OnInit {
 
-  constructor() { }
+    listnamesService: ListnamesService;
 
-  ngOnInit() {
-  }
+    constructor(listnamesService: ListnamesService) {
+      this.listnamesService = listnamesService;
+    }
 
+    ngOnInit() { }
+
+    @Input() detailFormMain;
+    @Input() data;
+    @Output() newDetailFormMain = new EventEmitter<boolean>();
+
+    removeAddForm(){
+      this.newDetailFormMain.emit(false);
+      this.detailFormMain = false;
+    }
 }
