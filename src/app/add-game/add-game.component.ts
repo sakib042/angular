@@ -42,7 +42,7 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame(formData){
-    //console.log(formData.value);
+    console.log(formData.value);
     var url = "https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps.json";
     this.listnamesService.addGameData(url, formData);
     this.status = 99;
@@ -57,5 +57,60 @@ export class AddGameComponent implements OnInit {
     setTimeout(() => {
       this.status = 0;
     }, 3000);
+  }
+
+  rate1 = false;
+  rate2 = false;
+  rate3 = false;
+  rate4 = false;
+  rate5 = false;
+  starSelected = 0;
+
+  star(id){
+    switch (id) {
+      case 1:
+        this.rate1 = true;
+        this.rate2 = false;
+        this.rate3 = false;
+        this.rate4 = false;
+        this.rate5 = false;
+        this.starSelected = 1;
+        break;
+      case 2:
+        this.rate1 = true;
+        this.rate2 = true;
+        this.rate3 = false;
+        this.rate4 = false;
+        this.rate5 = false;
+        this.starSelected = 2;
+        break;
+      case 3:
+        this.rate1 = true;
+        this.rate2 = true;
+        this.rate3 = true;
+        this.rate4 = false;
+        this.rate5 = false;
+        this.starSelected = 3;
+        break;
+      case 4:
+        this.rate1 = true;
+        this.rate2 = true;
+        this.rate3 = true;
+        this.rate4 = true;
+        this.rate5 = false;
+        this.starSelected = 4;
+        break;
+      case 5:
+        this.rate1 = true;
+        this.rate2 = true;
+        this.rate3 = true;
+        this.rate4 = true;
+        this.rate5 = true;
+        this.starSelected = 5;
+        break;
+      default:
+        break;
+    }
+
   }
 }

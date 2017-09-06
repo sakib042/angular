@@ -32,7 +32,7 @@ export class ListnamesService{
         this.games.push(addedData);
         this.addGameStatus = data.status;
         this.charactersChanged.next();
-        console.log(this.games);
+        //console.log(this.games);
       }
     );
   }
@@ -68,7 +68,7 @@ export class ListnamesService{
     .subscribe(
       (data) => {
         this.games = data;
-        console.log(this.games);
+        //console.log(this.games);
         this.error = false;
         this.charactersChanged.next();
       }
@@ -142,7 +142,7 @@ export class ListnamesService{
       .map(
         (response: Response) => {
           const extractedData = response.json().results;
-          console.log(response.json());
+          //console.log(response.json());
           const chars = extractedData.map((char) => {
             return {name: char.name, side: ''};
           });

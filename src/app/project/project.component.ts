@@ -94,7 +94,9 @@ export class ProjectComponent implements OnInit {
   }
 
   showAddForm(){
-    this.onStatusChanged(true);
+    if(this.detailForm==false){
+      this.onStatusChanged(true);
+    }
   }
 
   onDetailStatusChanged(newStatus){
@@ -103,7 +105,6 @@ export class ProjectComponent implements OnInit {
 
   showDetail(id){
     this.game = this.listnamesService.getOneGameData(id);
-    console.log(this.game);
     this.onDetailStatusChanged(true);
   }
 }

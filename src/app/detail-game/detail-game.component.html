@@ -1,45 +1,47 @@
 <div class="detailFormStyle" [ngClass]="detailFormMain?'detailFormStyleAdd':'detailFormStyleRemove'">
-    <form>
-        <div class="col-xs-4 col-sm-3">
-            <img height="250px" width="250px" src="{{data.image_url}}" alt="" class="img img-thumbnail" />
-            <div class="form-group">
-                <h3>{{data.name}}</h3>
-            </div>
-            <div class="form-group">
-                <label for="rating">Rating</label>
-                <p class="add-rating" style="background-color:green">
-                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
-                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
-                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
-                    <i class="addYellow fa fa-star fa-lg"></i>&nbsp;
-                    <i class="addYellow fa fa-star fa-lg"></i>
-                </p>
-            </div>
+    <h1 class="text-center">Details</h1>
+    <hr/>
+    <div class="col-xs-4 col-sm-3">
+        <img height="250px" width="250px" src="{{data.image_url}}" alt="" class="img img-thumbnail" />
+        <div class="form-group">
+            <h3>{{data.name}}</h3>
         </div>
-        <div class="col-xs-8 col-sm-9">
-            <div class="form-group">
-                <label for="owner">Owner</label>
-                <input class="form-control" type="text" name="owner" value="{{data.owner}}" />
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" class="form-control" rows="5" style="resize:none" value="{{data.description}}"></textarea>
-            </div>
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <p class="add-rating" style="background-color:green">
+                <span class="rating">
+                    <i class="{{data.rating>=1?'addYellow':''}} fa fa-star"></i>&nbsp;
+                    <i class="{{data.rating>=2?'addYellow':''}} fa fa-star"></i>&nbsp;
+                    <i class="{{data.rating>=3?'addYellow':''}} fa fa-star"></i>&nbsp;
+                    <i class="{{data.rating>=4?'addYellow':''}} fa fa-star"></i>&nbsp;
+                    <i class="{{data.rating==5?'addYellow':''}}  fa fa-star"></i>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="col-xs-8 col-sm-9">
+        <div class="form-group">
+            <label for="owner">Owner</label>
+            <input class="form-control" type="text" name="owner" value="{{data.owner}}" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control" rows="5" style="resize:none" value="{{data.description}}"></textarea>
+        </div>
 
-            <div class="form-group">
-                <label for="platform">Platform</label>
-                <input type="text" class="form-control" value="{{data.platform}}" disabled />
-            </div>
-            <div class="form-group">
-                <label for="availability">Availability</label>
-                <input type="text" class="form-control" value="{{data.availability}}" disabled />
-            </div>
+        <div class="form-group">
+            <label for="platform">Platform</label>
+            <input type="text" class="form-control" value="{{data.platform}}" disabled />
         </div>
-        <div class="col-xs-12 col-sm-12">
-            <div class="form-group text-right">
-                <hr/>
-                <button type="button" (click)="removeAddForm()" class="btn btn-danger btn-lg"><i class="fa fa-times fa-lg"></i>&nbsp;&nbsp;Cancel</button>
-            </div>
+        <div class="form-group">
+            <label for="availability">Availability</label>
+            <input type="text" class="form-control" value="{{data.availability}}" disabled />
         </div>
-    </form>
+    </div>
+    <div class="col-xs-12 col-sm-12">
+        <div class="form-group text-right">
+            <hr/>
+            <button type="button" (click)="removeAddForm()" class="btn btn-danger btn-lg"><i class="fa fa-times fa-lg"></i>&nbsp;&nbsp;Cancel</button>
+        </div>
+    </div>
 </div>

@@ -50,3 +50,20 @@
     color: #FFF;
     transition: .5s;
 }
+
+.sidebar .copyright {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar .copyright code {
+    position: absolute;
+    width: 96%;
+    text-align: center;
+    top: -13px;
+    left: 2px;
+    color: #000;
+    background-color: lightblue;
+}
