@@ -17,7 +17,6 @@ export class AddGameComponent implements OnInit {
   selectedAvailability: string = this.availabilityOptions[1].value;
 
   platformOptions = [
-    {display:'Select from list', value:'none'},
     {display:'PlayStation', value:'play'},
     {display:'Xbox', value:'xbox'},
     {display:'IOS', value:'ios'},
@@ -42,9 +41,8 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame(formData){
-    console.log(formData.value);
-    var url = "https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps.json";
-    this.listnamesService.addGameData(url, formData);
+    //console.log(formData.value);
+    this.listnamesService.addGameData(formData.value);
     this.status = 99;
     this.timeout();
   }
@@ -52,11 +50,11 @@ export class AddGameComponent implements OnInit {
   timeout() {
     setTimeout(() => {
       this.status = this.listnamesService.getAddGameStatus();
-      console.log(this.status);
+      //console.log(this.status);
     }, 1500);
     setTimeout(() => {
       this.status = 0;
-    }, 3000);
+    }, 2500);
   }
 
   rate1 = false;

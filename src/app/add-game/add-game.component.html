@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="rating">Rating</label>
                 <input class="form-control" type="hidden" name="rating" [ngModel]="starSelected" />
-                <p class="form-control add-rating" style="background-color:green">
+                <p class="form-control add-rating" style="background-color:#5DA93C">
                     <i (click)="star(1)" [ngClass]="rate1?'addYellow':''" class="fa fa-star fa-lg"></i>&nbsp;
                     <i (click)="star(2)" [ngClass]="rate2?'addYellow':''" class="fa fa-star fa-lg"></i>&nbsp;
                     <i (click)="star(3)" [ngClass]="rate3?'addYellow':''" class="fa fa-star fa-lg"></i>&nbsp;
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="platform">Platform</label>
-                <select name="platform" class="form-control" required="required" [(ngModel)]="selectedPlatform" name="platform">
+                <select name="platform" class="form-control" [(ngModel)]="selectedPlatform" name="platform">
                     <option *ngFor="let option of platformOptions" [ngValue]="option.value">{{option.display}}</option>
                 </select>
             </div>
@@ -44,13 +44,13 @@
             </div>
             <div class="form-group">
                 <label for="image_url">Image URL</label>
-                <input class="form-control" type="text" name="image_url" required="required" ngModel />
+                <input class="form-control" type="text" name="image_url" ngModel />
             </div>
         </div>
         <div class="col-xs-12 col-sm-12">
             <div class="form-group text-right">
                 <hr/>
-                <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-save fa-lg"></i>&nbsp;&nbsp;Save</button>
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid"><i class="fa fa-save fa-lg"></i>&nbsp;&nbsp;Save</button>
                 <button type="button" (click)="removeAddForm()" class="btn btn-danger btn-lg"><i class="fa fa-times fa-lg"></i>&nbsp;&nbsp;Cancel</button>
             </div>
         </div>

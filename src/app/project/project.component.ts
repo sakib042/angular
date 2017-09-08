@@ -91,6 +91,10 @@ export class ProjectComponent implements OnInit {
 
   onStatusChanged(newStatus){
     this.addForm = newStatus;
+    if(newStatus === false){
+      this.games = this.listnamesService.getAllGameData('all');
+      console.log(this.games);
+    }
   }
 
   showAddForm(){

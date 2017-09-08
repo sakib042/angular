@@ -24,15 +24,15 @@ export class ListnamesService{
   private addGameStatus = 0;
   private deleteGameStatus = 0;
 
-  addGameData(url, data){
-    const _data = JSON.stringify(data.value);
-    const addedData = data.value;
+  addGameData(info){
+    const url = "https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps.json"
+    const _data = JSON.stringify(info);
+    const addedData = info;
     this.http.post(url, _data).subscribe(
       (data)=>{
         this.games.push(addedData);
         this.addGameStatus = data.status;
         this.charactersChanged.next();
-        //console.log(this.games);
       }
     );
   }
@@ -116,19 +116,16 @@ export class ListnamesService{
 
 
 
-  deleteGameData(id, key){
-    const url = 'https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps/' + key + '.json';
+  deleteOne(id){
+    const newKey = this.results.keys[id];
+    const url = 'https://web-developer-exam.firebaseio.com/sakib-Kr57W_b-YVvc52AJdps/' + newKey + '.json';
     this.http.delete(url).subscribe(
       (data)=>{
           this.deleteGameStatus = data.status;
           this.games.splice(id, 1);
+          this.charactersChanged.next();
       }
     )
-  }
-
-  deleteOne(id){
-    const newKey = this.results.keys[id];
-    this.deleteGameData(id, newKey);
   }
 
   getDeleteGameStatus(){
